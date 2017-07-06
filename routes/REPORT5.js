@@ -27,7 +27,7 @@ router.post('/', function(req, res){
             // create Request object
             var request = new sql.Request();
             // query to the database and get the records
-            request.query("SELECT TG001,TG002 FROM [TK].[dbo].[COPTG] WHERE TG003>='20170703' AND TG003<='20170703'"
+            request.query("SELECT TG001,TG002 FROM [TK].[dbo].[COPTG] WHERE TG003>='"+req.body.date1+"' AND TG003<='"+req.body.date2+"'"
                 , function (err, recordset) {
                     if (err) console.log(err)
                     else {
