@@ -9,7 +9,7 @@ var REPORT2 = require('./routes/REPORT2');
 var REPORT3 = require('./routes/REPORT3');
 var REPORTRESULT = require('./routes/REPORTRESULT');
 var REPORT4 = require('./routes/REPORT4');
-
+var REPORT5 = require('./routes/REPORT5');
 
 
 
@@ -79,6 +79,7 @@ app.use('/REPORT2',REPORT2);
 app.use('/REPORT3',REPORT3);
 app.use('/REPORTRESULT',REPORTRESULT);
 app.use('/REPORT4',REPORT4);
+app.use('/REPORT5',REPORT5);
 
 
 // Define routes.

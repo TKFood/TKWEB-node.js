@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>REPORT5</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>REPORT3</h1>
+    <form class="formNewsLetter" action="/REPORT5?form=newsletter" method="POST">
+    <div class="formContainer">
+        <h2>Sign up for our newsletter to receive news and specials!</h2>
+        <input type="hidden" name="_csrf" value="{{ csrf }}">
+        <ul>
+            <li>
+                <label>
+                    date1: <input type="text" name="date1">
+                </label>
+            </li>            
+        </ul>
+        <ul>
+            <li>
+                <label>
+                    date2: <input type="text" name="date2">
+                </label>
+            </li>            
+        </ul>
+        <input type="submit" value="submit">
+    </div>
+    <div>
+        <h1>p1: <%= p1 %></h1> 
+        <h1>p2: <%= p2 %></h1> 
+    </div>
+    <div>
+        <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+        <tr>
+            <th width="50px">TG001</th>
+            <th width="50px">TG002</th>
+        </tr>
+
+        <% for (var i = 0; i < data.length; i++) { %>
+        <tr>
+            <td width="50px"><%= data[i].TG001 %></td>
+            <td width="50px"><%= data[i].TG002 %></td>
+        </tr>    
+        <% } %>
+        
+    </div>
+</form>
+  </body>
+</html>
