@@ -18,6 +18,7 @@ to see the example in action.  Log in using username `j` and password `j`.
 
 這個專案主要是用node.js來寫報表系統，
 主要功能有以下說明:
+
 1-登入用passort，是直接讀取db\內的「users.js」，而非取資料庫
 2-報表來源是用mssql
 3-查詢出資料後，用html的table呈現
