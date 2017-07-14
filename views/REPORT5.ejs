@@ -3,46 +3,87 @@
   <head>
     <title>REPORT5</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/jquery-ui-1.12.1.custom/jquery-ui.css">
+    <script src="/js/jquery-3.2.1.js"></script>
+    <script src="/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    
   </head>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({dateFormat: 'yymmdd'});
+    $( "#datepicker1" ).datepicker({dateFormat: 'yymmdd'});
+    $( "#datepicker2" ).datepicker({dateFormat: 'yymmdd'});
+  });
+
+  $(document).ready(function() {
+      $("#btnExport").click(function(e) {
+        e.preventDefault();
+
+        //getting data from our table
+        var data_type = 'data:application/vnd.ms-excel';
+        var table_div = document.getElementById('table_wrapper');
+        var table_html = table_div.outerHTML.replace(/ /g, '%20');
+
+        var a = document.createElement('a');
+        a.href = data_type + ', ' + table_html;
+        a.download = 'exported_table_' + Math.floor((Math.random() * 9999999) + 1000000) + '.xls';
+        a.click();
+      });
+    });
+  </script>
   <body>
-    <h1>REPORT3</h1>
+    <h1>REPORT5</h1>
+    <h1>data</h1>
     <form class="formNewsLetter" action="/REPORT5?form=newsletter" method="POST">
     <div class="formContainer">
-        <h2>Sign up for our newsletter to receive news and specials!</h2>
         <input type="hidden" name="_csrf" value="{{ csrf }}">
         <ul>
             <li>
-                <label>
-                    date1: <input type="text" name="date1">
+                <label>                    
+                     <p>日期1：<input type="text" id="datepicker1" name="date1"></p>
                 </label>
             </li>            
         </ul>
         <ul>
             <li>
-                <label>
-                    date2: <input type="text" name="date2">
+                <label>                    
+                     <p>日期2：<input type="text" id="datepicker2" name="date2" ></p>
                 </label>
             </li>            
         </ul>
-        <input type="submit" value="submit">
+        <input type="submit" value="search">
+    </div>
+    <div>
+        <p>日期：<input type="text" id="datepicker"></p>
+        date1: <input type="text" name="date1">
+        date2: <input type="text" name="date2">
     </div>
     <div>
         <h1>p1: <%= p1 %></h1> 
         <h1>p2: <%= p2 %></h1> 
     </div>
     <div>
+        <button id="btnExport">Export to xls</button>
+    </div>    
+    <div id="table_wrapper">
         <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
-        <tr>
-            <th width="50px">TG001</th>
-            <th width="50px">TG002</th>
-        </tr>
+            <thead>
+                <tr>
+                    <th width="50px">TG001</th>
+                    <th width="50px">TG002</th>
+                </tr>
+            </thead>
+            <tbody>
+                  <% for (var i = 0; i < data.length; i++) { %>
+                <tr>
+                    <td width="50px"><%= data[i].TG001 %></td>
+                    <td width="50px"><%= data[i].TG002 %></td>
+                </tr>    
+                <% } %>
+            </tbody>
+        </table>
 
-        <% for (var i = 0; i < data.length; i++) { %>
-        <tr>
-            <td width="50px"><%= data[i].TG001 %></td>
-            <td width="50px"><%= data[i].TG002 %></td>
-        </tr>    
-        <% } %>
+      
         
     </div>
 </form>
