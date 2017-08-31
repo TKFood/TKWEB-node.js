@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>依品號彙總+現銷/電商</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/jquery-ui-1.12.1.custom/jquery-ui.css">
+    <script src="/js/jquery-3.2.1.js"></script>
+    <script src="/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+  </head>
+
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({dateFormat: 'yymmdd'});
+    $( "#datepicker1" ).datepicker({dateFormat: 'yymmdd'});
+    $( "#datepicker2" ).datepicker({dateFormat: 'yymmdd'});
+  });
+
+  $(function() {
+      $("#btnExport").click(function(e) {
+        e.preventDefault();
+
+        //getting data from our table
+        var data_type = 'data:application/vnd.ms-excel';
+        var table_div = document.getElementById('table_wrapper');
+        var table_html = table_div.outerHTML.replace(/ /g, '%20');
+
+        var a = document.createElement('a');
+        a.href = data_type + ', ' + table_html;
+        a.download = 'exported_table_' + Math.floor((Math.random() * 9999999) + 1000000) + '.xls';
+        a.click();
+      });
+    });
+  </script>
+
+  <body>
+     <form class="formNewsLetter" action="/REPORT10?form=newsletter" method="POST">
+	    <div class="formContainer">
+	        <input type="hidden" name="_csrf" value="{{ csrf }}">
+	        <ul>
+	            <li>
+	                <label>                    
+	                     <p>起始日期:<input type="text" id="datepicker1" name="date1"></p>
+	                </label>
+	            </li>            
+	        </ul>
+	        <ul>
+	            <li>
+	                <label>                    
+	                     <p>結束日期<input type="text" id="datepicker2" name="date2" ></p>
+	                </label>
+	            </li>            
+	        </ul>
+	        <input type="submit" value="search">
+	        <p>-------------------------------------------------</p>
+	    </div>
+	    	<div>
+	        	<button id="btnExport">匯出xls</button>
+	    	</div>    
+	    <div id="table_wrapper">
+	        <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+	            <thead>
+	                <tr>
+	                    <th width="150px">品號</th>
+	                    <th width="250px">品名</th>
+	                    <th width="50px">數量</th>
+	                    <th width="50px">贈品</th>
+	                    <th width="50px">單位</th>
+	                    <th width="50px">金額</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                  <% for (var i = 0; i < data.length; i++) { %>
+	                <tr>
+	                    <td width="150px"><%= data[i].品號 %></td>
+	                    <td width="250px"><%= data[i].品名 %></td>
+	                    <td width="50px"><%= data[i].數量 %></td>
+	                    <td width="50px"><%= data[i].贈品 %></td>
+	                    <td width="50px"><%= data[i].單位 %></td>
+	                    <td width="50px"><%= data[i].金額 %></td>
+	                </tr>    
+	                <% } %>
+	            </tbody>
+	        </table>      
+	        
+	    </div>
+	</form>
+  </body>
+</html>
