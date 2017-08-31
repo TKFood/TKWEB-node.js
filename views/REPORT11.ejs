@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>依品號彙總+現銷/電商</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/jquery-ui-1.12.1.custom/jquery-ui.css">
+    <script src="/js/jquery-3.2.1.js"></script>
+    <script src="/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+  </head>
+
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({dateFormat: 'yymmdd'});
+    $( "#datepicker1" ).datepicker({dateFormat: 'yy'});
+  });
+
+  $(function() {
+      $("#btnExport").click(function(e) {
+        e.preventDefault();
+
+        //getting data from our table
+        var data_type = 'data:application/vnd.ms-excel';
+        var table_div = document.getElementById('table_wrapper');
+        var table_html = table_div.outerHTML.replace(/ /g, '%20');
+
+        var a = document.createElement('a');
+        a.href = data_type + ', ' + table_html;
+        a.download = 'exported_table_' + Math.floor((Math.random() * 9999999) + 1000000) + '.xls';
+        a.click();
+      });
+    });
+  </script>
+
+  <body>
+     <form class="formNewsLetter" action="/REPORT11?form=newsletter" method="POST">
+	    <div class="formContainer">
+	        <input type="hidden" name="_csrf" value="{{ csrf }}">
+	        <ul>
+	            <li>
+	                <label>                    
+	                     <p>日期:<input type="text" id="datepicker1" name="date1"></p>
+	                </label>
+	            </li>            
+	        </ul>
+	        
+	        <input type="submit" value="search">
+	        <p>-------------------------------------------------</p>
+	    </div>
+	    	<div>
+	        	<button id="btnExport">匯出xls</button>
+	    	</div>    
+	    <div id="table_wrapper">
+	        <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+	            <thead>
+	                <tr>
+	                    <th width="100px">今年</th>
+	                    <th width="100px">月份</th>
+	                    <th width="100px">總計</th>
+	                    <th width="100px">官網</th>
+	                    <th width="100px">消費者</th>
+
+	                </tr>
+	            </thead>
+	            <tbody>
+	                  <% for (var i = 0; i < data.length; i++) { %>
+	                <tr>
+	                    <td width="100px"><%= data[i].今年 %></td>
+	                    <td width="100px"><%= data[i].月份 %></td>
+	                    <td width="100px"><%= data[i].總計 %></td>
+	                    <td width="100px"><%= data[i].官網 %></td>
+	                    <td width="100px"><%= data[i].消費者 %></td>
+
+	                </tr>    
+	                <% } %>
+	            </tbody>
+	        </table>      
+	        
+	    </div>
+	</form>
+  </body>
+</html>
