@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 router.get('/', function(req, res) {
-   res.render('REPORT5', { title: 'REPORT5',p1:'',p2:'' ,data:''}); 
+   res.render('REPORT5', { title: 'REPORT5',p1:'',p2:'' ,data:'',p3:''}); 
 
 });
 
@@ -37,7 +37,7 @@ router.post('/', function(req, res){
                              myData.push(recordset.recordsets[0][i]);  
                         }                        
 
-                         res.render('REPORT5',{p1:req.body.date1,p2:req.body.date2,data:myData});
+                         res.render('REPORT5',{p1:req.body.date1,p2:req.body.date2,data:myData,p3:req.body.selectpicker});
 
                         sql.close();
                     }
