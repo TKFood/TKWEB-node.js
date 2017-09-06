@@ -41,7 +41,7 @@ router.post('/', function(req, res){
                              myData.push(recordset.recordsets[0][i]);  
                         }                        
 
-                         res.render('REPORT11',{p1:req.body.date1,data:myData});
+                         res.render('REPORT11',{p1:req.body.date1,data:myData});                    
 
                         sql.close();
                     }
