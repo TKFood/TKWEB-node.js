@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 router.get('/', function(req, res) {
-   res.render('REPORT10', { title: 'REPORT10',p1:'',p2:'' ,data:''}); 
+   res.render('REPORT10', { title: 'REPORT10',p1:'',p2:'' ,p3:'',p4:'',data:''}); 
 
 });
 
@@ -70,7 +70,7 @@ router.post('/', function(req, res){
                              myData.push(recordset.recordsets[0][i]);  
                         }                        
 
-                         res.render('REPORT10',{p1:req.body.date1,p2:req.body.date2,data:myData});
+                         res.render('REPORT10',{p1:req.body.date1,p2:req.body.date2,p3:req.body.selectpickercheck,p4:req.body.selectpicker,data:myData});
 
                         sql.close();
                     }

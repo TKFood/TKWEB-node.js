@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="refresh" content="1">
     <title>REPORT3</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <h1>REPORT3</h1>
     <form class="formNewsLetter" action="/REPORT3?form=newsletter" method="POST">
-    <div class="formContainer">
-        <h2>Sign up for our newsletter to receive news and specials!</h2>
-        <input type="hidden" name="_csrf" value="{{ csrf }}">
-        <ul>
-            <li>
-                <label>
-                    Name: <input type="text" name="name">
-                </label>
-            </li>            
-        </ul>
-        <input type="submit" value="submit">
-    </div>
-</form>
+        <div class="formContainer">
+            <h2>Sign up for our newsletter to receive news and specials!</h2>
+            <input type="hidden" name="_csrf" value="{{ csrf }}">
+            <ul>
+                <li>
+                    <label>
+                        Name: <input type="text" name="name">
+                    </label>
+                </li>            
+            </ul>
+            <input type="submit" value="submit">
+        </div>
+        <div>
+            <body onload="ShowTime()">
+            <div id="showbox"></div>
+        </div>
+    </form>
   </body>
+  <script>
+    function ShowTime(){
+　       document.getElementById('showbox').innerHTML = new Date();
+        //setTimeout('ShowTime()',1000);
+    } 
+    </script>
 </html>

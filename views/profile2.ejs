@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<p>
+			ID: <%= user.id %><br/>
+			Username: <%= user.username %><br/>
+			Name: <%= user.displayName %><br/>
+			<% if (user.emails) { %>
+			Email: <%= user.emails[0].value %><br/>
+			<% } %>
+		</p>
+			<a href="/logout">Log out</a>
+	</head>
+		<body>
+			<p>
+				<a href="/REPORT12">REPORT12</a>
+			</p>
+			<p>
+				<a href="/REPORT1">REPORT1</a>
+			</p>			
+			<p>
+				<a href="/REPORT2">REPORT2</a>
+			</p>
+			<p>
+				<a href="/REPORT3">REPORT3</a>
+			</p>
+			<p>
+				<a href="/REPORT4">REPORT4</a>
+			</p>
+			<p>
+				<a href="/REPORT5">REPORT5</a>
+			</p>
+			<p>
+				<a href="/REPORTINDEX">REPORTINDEX</a>
+			</p>
+			
+		</body>
+</html>

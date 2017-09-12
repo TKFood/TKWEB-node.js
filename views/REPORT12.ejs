@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta http-equiv="refresh" content="1">
+    <title>依品號彙總+現銷/電商</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/jquery-ui-1.12.1.custom/jquery-ui.css">
+    <script src="/js/jquery-3.2.1.js"></script>
+    <script src="/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+  </head>
+
+  <script>
+ 
+  </script>
+
+  <body>
+      <div id="table_wrapper">
+	        <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
+	            <thead>
+	                <tr>
+	                    <th width="100px">ID</th>
+	                    <th width="100px">MB001</th>	                   
+
+	                </tr>
+	            </thead>
+	            <tbody>
+	                  <% for (var i = 0; i < data.length; i++) { %>
+	                <tr>
+	                    <td width="100px"><%= data[i].ID %></td>
+	                    <td width="100px"><%= data[i].MB001 %></td>
+
+	                </tr>    
+	                <% } %>
+	            </tbody>
+	        </table>      
+	        
+	    </div>
+  </body>
+</html>

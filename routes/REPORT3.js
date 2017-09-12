@@ -8,14 +8,9 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res){
     //console.log('Name (from visible form field): ' + req.body.name);
-    res.render('REPORTRESULT',{p1:req.body.name});
+    //res.render('REPORTRESULT',{p1:req.body.name});
+   res.render('REPORT3', { title: 'REPORT3' }); 
 });
-
-
-
-
-
-
 
 
 

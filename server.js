@@ -12,6 +12,7 @@ var REPORT4 = require('./routes/REPORT4');
 var REPORT5 = require('./routes/REPORT5');
 var REPORT10 = require('./routes/REPORT10');
 var REPORT11 = require('./routes/REPORT11');
+var REPORT12 = require('./routes/REPORT12');
 
 
 
@@ -84,6 +85,7 @@ app.use('/REPORT4',REPORT4);
 app.use('/REPORT5',REPORT5);
 app.use('/REPORT10',REPORT10);
 app.use('/REPORT11',REPORT11);
+app.use('/REPORT12',REPORT12);
 
 
 // Define routes.
@@ -101,11 +103,17 @@ app.post('/login',
   passport.authenticate('local', { failureRedirect: '/login',failureFlash:true }),
   function(req, res) {
     //res.redirect('/');
-    res.render('profile', { user: req.user });
+    
+    if(req.user.username=='moc')
+    {
+      res.render('profile2', { user: req.user });
+    }
+    else if(req.user.username!='moc')
+    {
+      res.render('profile', { user: req.user });
+    }
   });
 
-
-  
   
 app.get('/logout',
   function(req, res){
@@ -113,10 +121,19 @@ app.get('/logout',
     res.redirect('/');
   });
 
+
 app.get('/profile',
   require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
     res.render('profile', { user: req.user });
   });
+
+
+app.get('/profile2',
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    res.render('profile2', { user: req.user });
+  });
+
 
 app.listen(3000);

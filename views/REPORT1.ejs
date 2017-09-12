@@ -6,6 +6,17 @@
   </head>
   <body>
     <h1>REPORT1</h1>
+    <h1>TIME:</h1>
     <a href="/REPORT1">REPORT1</a>
+    <a onclick="timeNow(test1)" href="#">SET TIME</a>
+	<input id="test1" type="time" value="00:00"/>
   </body>
+  <script>
+	function timeNow(i) {
+	  var d = new Date(),
+	      h = (d.getHours()<10?'0':'') + d.getHours(),
+	      m = (d.getMinutes()<10?'0':'') + d.getMinutes();
+	  i.value = h + ':' + m;
+	}	
+</script>
 </html>
