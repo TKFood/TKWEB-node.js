@@ -18,16 +18,41 @@
 	        <table style="border:3px #cccccc solid;" cellpadding="10" border='1'>
 	            <thead>
 	                <tr>
-	                    <th width="100px">ID</th>
-	                    <th width="100px">MB001</th>	                   
+	                    <th width="80px">線別</th>
+	                    <th width="80px">生產日</th>
+	                    <th width="100px">品號</th>
+	                    <th width="200px">品名</th>
+	                    <th width="100px">規格</th>
+	                    <th width="50px">桶數</th>
+	                    <th width="50px">數量</th>
+	                    <th width="200px">客戶</th>	
+	                    <th width="50px">成型重量</th>
+	                    <th width="50px">成型長度</th>
+	                    <th width="50px">成型寬度</th>
+	                    <th width="50px">烘烤重量</th>
+	                    <th width="50px">烘烤長度</th>
+	                    <th width="50px">烘烤寬度</th>
+
 
 	                </tr>
 	            </thead>
 	            <tbody>
 	                  <% for (var i = 0; i < data.length; i++) { %>
-	                <tr>
-	                    <td width="100px"><%= data[i].ID %></td>
-	                    <td width="100px"><%= data[i].MB001 %></td>
+	                <tr>	                    
+	                    <td width="80px"><%= data[i].線別 %></td>
+	                    <td width="80px"><%= data[i].生產日 %></td>
+	                    <td width="100px"><%= data[i].品號 %></td>
+	                    <td width="200px"><%= data[i].品名 %></td>
+	                    <td width="100px"><%= data[i].規格 %></td>
+	                    <td width="50px"><%= data[i].桶數 %></td>
+	                    <td width="50px"><%= data[i].數量 %></td>
+	                    <td width="200px"><%= data[i].客戶 %></td>
+	                    <td width="50px"><%= data[i].成型重量 %></td>
+	                    <td width="50px"><%= data[i].成型寬度 %></td>
+	                    <td width="50px"><%= data[i].成型寬度 %></td>
+	                    <td width="50px"><%= data[i].烘烤重量 %></td>
+	                    <td width="50px"><%= data[i].烘烤長度 %></td>
+	                    <td width="50px"><%= data[i].烘烤寬度 %></td>
 
 	                </tr>    
 	                <% } %>
