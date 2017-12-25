@@ -47,15 +47,15 @@ router.post('/', function(req, res){
 
             if(req.body.selectpicker=="0")
             {
-                SQL="SELECT TH004 AS '品號',TH005 AS '品名',CONVERT(real, SUM(TH008)) AS '數量',CONVERT(real, SUM(TH024)) AS '贈品',TH009 AS '單位',CONVERT(real, SUM(TH013)) AS '金額' FROM [TK].dbo.COPTG,[TK].dbo.COPTH WHERE TG001=TH001 AND TG002=TH002 AND (TG001='A233' OR TG001='A234' OR (TG001='A230'  AND TG006  IN ('160092','170007') )) AND TG003>='"+req.body.date1+"' AND TG003<='"+req.body.date2+"' " +SQLQUERY+"  GROUP BY TH004,TH005,TH009 ORDER BY SUM(TH013) DESC";
+                SQL="SELECT TH004 AS '品號',TH005 AS '品名',CONVERT(real, SUM(TH008)) AS '數量',CONVERT(real, SUM(TH024)) AS '贈品',TH009 AS '單位',CONVERT(real, SUM(TH013)) AS '金額' FROM [TK].dbo.COPTG,[TK].dbo.COPTH WHERE TG001=TH001 AND TG002=TH002 AND TG023='Y' AND (TG001='A233' OR TG001='A234' OR (TG001='A230'  AND TG006  IN ('160092','170007') )) AND TG003>='"+req.body.date1+"' AND TG003<='"+req.body.date2+"' " +SQLQUERY+"  GROUP BY TH004,TH005,TH009 ORDER BY SUM(TH013) DESC";
             }
             else if(req.body.selectpicker=="1")
             {
-                SQL="SELECT TH004 AS '品號',TH005 AS '品名',CONVERT(real, SUM(TH008)) AS '數量',CONVERT(real, SUM(TH024)) AS '贈品',TH009 AS '單位',CONVERT(real, SUM(TH013)) AS '金額' FROM [TK].dbo.COPTG,[TK].dbo.COPTH WHERE TG001=TH001 AND TG002=TH002 AND (TG001='A233' OR TG001='A234') AND TG003>='"+req.body.date1+"' AND TG003<='"+req.body.date2+"' " +SQLQUERY+"  GROUP BY TH004,TH005,TH009 ORDER BY SUM(TH013) DESC";
+                SQL="SELECT TH004 AS '品號',TH005 AS '品名',CONVERT(real, SUM(TH008)) AS '數量',CONVERT(real, SUM(TH024)) AS '贈品',TH009 AS '單位',CONVERT(real, SUM(TH013)) AS '金額' FROM [TK].dbo.COPTG,[TK].dbo.COPTH WHERE TG001=TH001 AND TG002=TH002 AND TG023='Y' AND (TG001='A233' OR TG001='A234') AND TG003>='"+req.body.date1+"' AND TG003<='"+req.body.date2+"' " +SQLQUERY+"  GROUP BY TH004,TH005,TH009 ORDER BY SUM(TH013) DESC";
             }
             else if(req.body.selectpicker=="2")
             {
-               SQL="SELECT TH004 AS '品號',TH005 AS '品名',CONVERT(real, SUM(TH008)) AS '數量',CONVERT(real, SUM(TH024)) AS '贈品',TH009 AS '單位',CONVERT(real, SUM(TH013)) AS '金額' FROM [TK].dbo.COPTG,[TK].dbo.COPTH WHERE TG001=TH001 AND TG002=TH002 AND (TG001='A230'  AND TG006  IN ('160092','170007') ) AND TG003>='"+req.body.date1+"' AND TG003<='"+req.body.date2+"' " +SQLQUERY+"  GROUP BY TH004,TH005,TH009 ORDER BY SUM(TH013) DESC";
+               SQL="SELECT TH004 AS '品號',TH005 AS '品名',CONVERT(real, SUM(TH008)) AS '數量',CONVERT(real, SUM(TH024)) AS '贈品',TH009 AS '單位',CONVERT(real, SUM(TH013)) AS '金額' FROM [TK].dbo.COPTG,[TK].dbo.COPTH WHERE TG001=TH001 AND TG002=TH002 AND TG023='Y' AND (TG001='A230'  AND TG006  IN ('160092','170007') ) AND TG003>='"+req.body.date1+"' AND TG003<='"+req.body.date2+"' " +SQLQUERY+"  GROUP BY TH004,TH005,TH009 ORDER BY SUM(TH013) DESC";
             }
             
 
