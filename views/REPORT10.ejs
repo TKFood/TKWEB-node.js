@@ -20,7 +20,7 @@
 		$("#datepicker1").val(<%= p1 %>)
 		$("#datepicker2").val(<%= p2 %>)
 		$("#selectpickercheck").val(<%= p3 %>)
-		$("#selectpickercheck").val(<%= p4 %>)
+		$("#selectpicker").val(<%= p4 %>)
 	});
 
 	$(function () {
@@ -62,8 +62,8 @@
 				<li>
 					<select class="selectpickercheck" data-style="btn-info" id="selectpickercheck" name="selectpickercheck">
 		        	<optgroup label="check">
-			            <option name="未核" value="0">未核</option>
-			            <option name="已核" value="1">已核</option>
+		        		<option name="已核" value="1">已核</option>
+			            <option name="未核" value="0">未核</option>			           
 			            <option name="全部" value="2">全部</option>		          
 		            </optgroup>
 		            </select>
@@ -71,11 +71,13 @@
 			</ul>
 			<ul>
 				<li>
-					<select class="selectpicker" data-style="btn-info" id="selectpickercheck"  name="selectpicker">
+					<select class="selectpicker" data-style="btn-info" id="selectpicker"  name="selectpicker">
 		        	<optgroup label="KIND">
 			            <option name="電商+現銷" value="0">電商+現銷</option>
 			            <option name="電商" value="1">電商</option>
-			            <option name="現銷" value="2">現銷</option>		          
+			            <option name="現銷" value="2">現銷</option>	
+			            <option name="官網" value="3">官網</option>	
+			            <option name="他網" value="4">他網</option>		          
 		            </optgroup>
 		            </select>
 				</li>
